@@ -9,6 +9,6 @@ npm-debug.log
 
 .dccache
 .dcignore
-.idea/
-.dccache
 
+
+.idea/

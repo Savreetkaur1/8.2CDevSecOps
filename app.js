@@ -12,8 +12,13 @@ var express = require('express');
 var http = require('http');
 var path = require('path');
 var ejsEngine = require('ejs-locals');
+<<<<<<< HEAD
 var bodyParser = require('body-parser');
 var session = require('express-session')
+=======
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+>>>>>>> sonarcloud-config-backup
 var methodOverride = require('method-override');
 var logger = require('morgan');
 var errorHandler = require('errorhandler');
@@ -39,11 +44,15 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(logger('dev'));
 app.use(methodOverride());
+<<<<<<< HEAD
 app.use(session({
   secret: 'keyboard cat',
   name: 'connect.sid',
   cookie: { path: '/' }
 }))
+=======
+app.use(cookieParser());
+>>>>>>> sonarcloud-config-backup
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(fileUpload());
@@ -53,10 +62,16 @@ app.use(routes.current_user);
 app.get('/', routes.index);
 app.get('/login', routes.login);
 app.post('/login', routes.loginHandler);
+<<<<<<< HEAD
 app.get('/admin', routes.isLoggedIn, routes.admin);
 app.get('/account_details', routes.isLoggedIn, routes.get_account_details);
 app.post('/account_details', routes.isLoggedIn, routes.save_account_details);
 app.get('/logout', routes.logout);
+=======
+app.get('/admin', routes.admin);
+app.get('/account_details', routes.get_account_details);
+app.post('/account_details', routes.save_account_details);
+>>>>>>> sonarcloud-config-backup
 app.post('/create', routes.create);
 app.get('/destroy/:id', routes.destroy);
 app.get('/edit/:id', routes.edit);

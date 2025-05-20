@@ -23,7 +23,9 @@ time, mark, audio, video {
 /* line 20, ../../../../../Users/fred/.rvm/gems/ruby-1.9.3-p0/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 body {
   line-height: 1;
+
   height: 100vh;
+
 }
 
 /* line 22, ../../../../../Users/fred/.rvm/gems/ruby-1.9.3-p0/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
@@ -73,9 +75,16 @@ body {
 #page-title {
   color: #666666;
   background-color: #f8f8f8;
+
   font-size: 3rem;
   margin: 1rem 1rem 0 0;
   padding: 1rem 2rem 0 2rem;
+
+  font-size: 32px;
+  line-height: 1.35;
+  padding: 20px 0;
+  text-align: center;
+
   text-shadow: 0 1px 1px white;
 }
 
@@ -99,21 +108,39 @@ body {
 
 /* line 32, ../sass/screen.sass */
 #list {
+
   padding: 2rem 0 0 0;
   align-self: center;
+
+  width: 283px;
+  margin: 0 auto;
+  padding: 20px 0 15px;
+  position: relative;
 }
 
 /* line 38, ../sass/screen.sass */
 .item, .item-new {
   overflow: hidden;
+
+  *zoom: 1;
+
   background-color: #f9f9f9;
   border: 1px solid #eeeeee;
   border-radius: 6px 6px 6px 6px;
   list-style: none outside none;
+
   margin: 0.75rem;
   padding: 0.75rem;
   width: 25rem;
   text-shadow: 1px 1px 0 white;
+}
+
+
+  margin: 6px 0 0;
+  padding: 8px 9px 9px;
+  position: relative;
+  text-shadow: 1px 1px 0 white;
+  width: 250px;
 }
 
 /* line 49, ../sass/screen.sass */
@@ -124,8 +151,13 @@ body {
 
 /* line 53, ../sass/screen.sass */
 .item-new {
+
   padding: 0.5rem;
   width: 25.5rem;
+
+  padding: 4px 5px;
+  width: 258px;
+
 }
 
 /* line 57, ../sass/screen.sass */
@@ -134,8 +166,14 @@ body {
   color: #666666;
   font-family: "Lucida Grande", "Lucida Sans Unicode", sans-serif;
   font-size: 15px;
+
   width: 25rem;
   height: 2rem;
+
+  padding: 3px 4px;
+  width: 248px;
+  height: 19px;
+
 }
 
 /* line 66, ../sass/screen.sass */
@@ -181,9 +219,17 @@ body {
 /* line 92, ../sass/screen.sass */
 #footer {
   overflow: hidden;
+
   margin: 0 auto;
   position: relative;
   top: 1rem;
+
+  *zoom: 1;
+  width: 210px;
+  margin: 0 auto;
+  position: relative;
+  top: 17px;
+
 }
 
 /* line 99, ../sass/screen.sass */
@@ -221,14 +267,34 @@ body {
   text-decoration: underline;
 }
 
+
 /* line 12, ../../../../../Users/fred/.rvm/gems/ruby-1.9.3-p0/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/layout/_sticky-footer.scss */
 #layout {
   display: flex;
   flex-direction: column;
+
+/* line 10, ../../../../../Users/fred/.rvm/gems/ruby-1.9.3-p0/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/layout/_sticky-footer.scss */
+html, body {
+  height: 100%;
+}
+
+/* line 12, ../../../../../Users/fred/.rvm/gems/ruby-1.9.3-p0/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/layout/_sticky-footer.scss */
+#layout {
+  clear: both;
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin-bottom: -48px;
+}
+/* line 18, ../../../../../Users/fred/.rvm/gems/ruby-1.9.3-p0/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/layout/_sticky-footer.scss */
+#layout #layout-footer {
+  height: 48px;
+
 }
 
 /* line 20, ../../../../../Users/fred/.rvm/gems/ruby-1.9.3-p0/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/layout/_sticky-footer.scss */
 #footer-wrap {
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -263,4 +329,9 @@ body {
   text-decoration: none;
   color: #666666;
   margin: 0 1rem 0 1rem;
+
+  clear: both;
+  position: relative;
+  height: 48px;
+
 }

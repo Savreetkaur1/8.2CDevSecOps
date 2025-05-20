@@ -27,7 +27,11 @@ exports.index = function (req, res, next) {
       if (err) return next(err);
 
       res.render('index', {
+
         title: 'Patch TODO List',
+
+        title: 'Goof TODO',
+
         subhead: 'Vulnerabilities at their best',
         todos: todos,
       });
@@ -35,6 +39,7 @@ exports.index = function (req, res, next) {
 };
 
 exports.loginHandler = function (req, res, next) {
+
   if (validator.isEmail(req.body.username)) {
     User.find({ username: req.body.username, password: req.body.password }, function (err, users) {
       if (users.length > 0) {
@@ -63,6 +68,17 @@ function adminLoginSuccess(redirectPage, session, username, res) {
       return res.redirect('/admin')
   }
 }
+
+  User.find({ username: req.body.username, password: req.body.password }, function (err, users) {
+    if (users.length > 0) {
+      const redirectPage = req.body.redirectPage
+      return adminLoginSuccess(redirectPage, res)
+    } else {
+      return res.redirect('/admin')
+    }
+  });
+};
+
 
 exports.login = function (req, res, next) {
   return res.render('admin', {
@@ -112,6 +128,7 @@ exports.save_account_details = function(req, res, next) {
   }
 }
 
+
 exports.isLoggedIn = function (req, res, next) {
   if (req.session.loggedIn === 1) {
     return next()
@@ -126,6 +143,17 @@ exports.logout = function (req, res, next) {
     return res.redirect('/')  
   })
 }
+
+
+function adminLoginSuccess(redirectPage, res) {
+  console.log({redirectPage})
+  if (redirectPage) {
+      return res.redirect(redirectPage)
+  } else {
+      return res.redirect('/admin')
+  }
+}
+
 
 function parse(todo) {
   var t = todo;
@@ -299,7 +327,11 @@ exports.about_new = function (req, res, next) {
   console.log(JSON.stringify(req.query));
   return res.render("about_new.dust",
     {
+
       title: 'Patch TODO List',
+
+      title: 'Goof TODO',
+
       subhead: 'Vulnerabilities at their best',
       device: req.query.device
     });
