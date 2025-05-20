@@ -28,10 +28,12 @@ exports.index = function (req, res, next) {
 
       res.render('index', {
 
+
         title: 'Patch TODO List',
 
         title: 'Goof TODO',
 
+        title: 'Patch TODO List',
         subhead: 'Vulnerabilities at their best',
         todos: todos,
       });
@@ -54,6 +56,7 @@ exports.loginHandler = function (req, res, next) {
   } else {
     return res.status(401).send()
   }
+
 };
 
 function adminLoginSuccess(redirectPage, session, username, res) {
@@ -72,12 +75,30 @@ function adminLoginSuccess(redirectPage, session, username, res) {
   User.find({ username: req.body.username, password: req.body.password }, function (err, users) {
     if (users.length > 0) {
       const redirectPage = req.body.redirectPage
-      return adminLoginSuccess(redirectPage, res)
+      const session = req.session
+      const username = req.body.username
+      return adminLoginSuccess(redirectPage, session, username, res)
     } else {
       return res.redirect('/admin')
     }
   });
 };
+
+
+};
+
+function adminLoginSuccess(redirectPage, session, username, res) {
+  session.loggedIn = 1
+
+  // Log the login action for audit
+  console.log(`User logged in: ${username}`)
+
+  if (redirectPage) {
+      return res.redirect(redirectPage)
+  } else {
+      return res.redirect('/admin')
+  }
+}
 
 
 exports.login = function (req, res, next) {
@@ -129,6 +150,9 @@ exports.save_account_details = function(req, res, next) {
 }
 
 
+
+
+
 exports.isLoggedIn = function (req, res, next) {
   if (req.session.loggedIn === 1) {
     return next()
@@ -145,14 +169,24 @@ exports.logout = function (req, res, next) {
 }
 
 
+
 function adminLoginSuccess(redirectPage, res) {
   console.log({redirectPage})
+
+function adminLoginSuccess(redirectPage, session, username, res) {
+  session.loggedIn = 1
+
+  // Log the login action for audit
+  console.log(`User logged in: ${username}`)
+
+
   if (redirectPage) {
       return res.redirect(redirectPage)
   } else {
       return res.redirect('/admin')
   }
 }
+
 
 
 function parse(todo) {
@@ -328,9 +362,12 @@ exports.about_new = function (req, res, next) {
   return res.render("about_new.dust",
     {
 
+
       title: 'Patch TODO List',
 
       title: 'Goof TODO',
+
+      title: 'Patch TODO List',
 
       subhead: 'Vulnerabilities at their best',
       device: req.query.device
