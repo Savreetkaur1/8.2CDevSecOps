@@ -13,6 +13,8 @@
     "build": "browserify -r jquery > public/js/bundle.js",
     "cleanup": "mongo express-todo --eval 'db.todos.remove({});'",
     "test": "snyk test"
+"coverage": "echo \"Skipping coverage step for now.\""
+
   },
   "dependencies": {
     "adm-zip": "0.4.7",
