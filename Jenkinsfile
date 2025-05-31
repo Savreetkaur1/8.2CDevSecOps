@@ -21,14 +21,12 @@ pipeline {
         }
 
         stage('NPM Audit (Security Scan)') {
-    steps {
-        script {
-            def result = bat(script: 'npm audit --json > audit-results.json', returnStatus: true)
-            echo "npm audit completed with exit code: ${result}"
-        }
-    }
-}
-
+            steps {
+                script {
+                    def auditStatus = bat(script: 'npm audit --json > audit-results.json', returnStatus: true)
+                    echo "npm audit exit code: ${auditStatus} (ignored for build failure)"
+                }
+            }
         }
     }
 
