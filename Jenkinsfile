@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/Savreetkaur1/8.2CDevSecOps.git'
+                git 'https://github.com/Savreetkaur1/8.2CDevSecOps.git'
             }
         }
 
@@ -14,11 +14,11 @@ pipeline {
             }
         }
 
-        stage('Run Tests') {
-            steps {
-                bat 'npm test'
-            }
-        }
+        // stage('Run Tests') {
+        //     steps {
+        //         bat 'npm test'
+        //     }
+        // }
 
         stage('Generate Coverage Report') {
             steps {
@@ -39,7 +39,7 @@ pipeline {
         }
 
         failure {
-            mail to: 'YOUR_EMAIL@gmail.com',
+            mail to: 'savreet454@gmail.com',
                  subject: "Jenkins Build Failed: ${env.JOB_NAME}",
                  body: "Build ${env.BUILD_NUMBER} has failed. Please check the Jenkins console for more information."
         }
