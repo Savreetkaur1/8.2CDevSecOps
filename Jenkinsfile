@@ -20,11 +20,12 @@ pipeline {
             }
         }
 
-        stage('NPM Audit (Security Scan)') {
-            steps {
-                bat 'npm audit --json > audit-results.json'
-            }
-        }
+      stage('NPM Audit (Security Scan)') {
+    steps {
+        bat(script: 'npm audit --json > audit-results.json', returnStatus: true)
+    }
+}
+
     }
 
     post {
